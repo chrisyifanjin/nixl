@@ -7,7 +7,7 @@
 #
 
 ARG BASE_IMAGE=nvcr.io/nvidia/pytorch:26.08-py3
-ARG INFINIA_LIBS_IMAGE=harbor.mellanox.com/nixl/infinia-libs:v2.5.0-rcx.1
+ARG INFINIA_LIBS_IMAGE=il.artifactory.nvidia.com/sw-nbu-swx-nixl-docker-local/static/infinia-libs:v2.5.0-rcx.1
 # libcuobjclient dev files: the PyTorch and cuda-dl-base devel images ship the
 # cuObject runtime but not libcuobjclient-dev, so CI would build the OBJ plugin
 # without the S3 accelerated engines. Keep on the same NGC release as the
@@ -82,7 +82,7 @@ LABEL version="1.0"
 RUN . /etc/os-release && \
     printf '%s\n' \
         'Types: deb' \
-        'URIs: https://urm.nvidia.com/artifactory/ubuntu-public' \
+        'URIs: https://artifactory.nvidia.com/artifactory/ubuntu-public' \
         "Suites: $VERSION_CODENAME $VERSION_CODENAME-updates $VERSION_CODENAME-backports $VERSION_CODENAME-security" \
         'Components: main restricted universe multiverse' \
         'Trusted: yes' > /etc/apt/sources.list.d/ubuntu.sources && \
